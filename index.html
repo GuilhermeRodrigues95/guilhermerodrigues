@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="styles/style.css" rel="stylesheet">
+    <link href="styles/fonts.css" rel="stylesheet">
+    <link href="styles/media.css" rel="stylesheet">
+    <title>Guilherme Rodrigues</title>
+</head>
+<body>
+ <header> <!--Cabeçalho-->
+        <div id="title">
+            <h1>Guilherme Rodrigues</h1>   
+            <h3>Desenvolvedor Web</h3> 
+        </div>  
+
+        <ul> <!-- Lista desordenada -->
+            <a href="index.html"><li>Inicio</li></a> <!--a significa que é o link href é o caminho-->
+            <a href="#"><li>Serviços</li></a>
+            <a href="#"><li>Sobre</li></a>
+            <a href="portfolio.html"><li>Portfólio</li></a>
+            <a href="#" id="inscreva-se-but"><li>Painel de controle</li></a>
+ </header>   
+    <main> <!--parte principal do site-->
+        <aside><!--tag semantica para definir uma página que tenha um lado-->
+            <h2><span>Inscreva-se Agora</span></h2> <!--h2 é o texto de nível 2 -->
+            <h2>NewsLetter</h2>
+            <p>Inscreva-se para receber atualizações sobre o nosso portifólio, promoções e muito mais.</p> <!--parágrafo-->
+            <!--tag semantica para formulário-->
+            <form>
+                <input type="text" placeholder="Nome"> <!--placeholder é o nome que fica dentrod a caíxa de texto-->
+                <input type="email" placeholder="E-mail">
+                <input type="submit" value="Enviar">
+                <!--em caso de botão não se troca o texto com o placeholder e sim com o value-->
+            </form>
+        </aside>
+        <article> <!--div semantica onde serão abrigadas imagens-->
+            <img src="images/img.svg" alt="imagem">
+        </article>
+    </main>
+</body>
+</html>
