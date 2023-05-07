@@ -150,4 +150,13 @@ figcaption {
     text-decoration: underline;
     cursor: pointer;
   }
+
+.planilha {
+    width: 800px;
+    height: 600px;
+    position: absolute;
+    top: 50px;
+    left: 50px;
+}
+
   
