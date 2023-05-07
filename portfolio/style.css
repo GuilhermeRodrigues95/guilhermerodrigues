@@ -3,7 +3,7 @@
 body{
     margin: 0;
     font-family: 'Noto Sans', sans-serif;
-    background: #2b2b2b;
+    background:#201b2c;
 }
 
 header{
@@ -23,24 +23,14 @@ header{
     align-items: center;
     font-size: 12px;
     padding: 15px;
+    margin: 1% auto;
 }
 
 .logotipo >h1{
-    font-size:medium;
-    text-decoration:underline;
-    cursor: pointer; 
+    font-size:small;
+    text-decoration:double;
+    color:#77ffc0;
 }
-.logotipo >h1:hover{
-    font-size:large;
-    text-decoration:underline; ; 
-}
-
-.entorno{
-    justify-content: center;
-    align-items: center;
-    margin: 0px;
-}
-
 .main-login{
     width: 80vw;
     height: 85vh;
@@ -49,7 +39,9 @@ header{
     justify-content: center;
     align-items: center;
     border-radius: 15px;
-    margin: 5% 10%;
+    margin: 5vh auto;
+    border: none;
+    box-shadow: 0px 10px 40px #00000056;
 }
 
 .lado-esquerdo{
@@ -59,6 +51,7 @@ header{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin: 30px auto;
 }
 
 .lado-esquerdo >h1{
