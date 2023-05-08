@@ -20,8 +20,9 @@ header{
     cursor: pointer;
 }
 
-#title >h1:hover{
+#title >h1{
     color: rgb(132, 14, 201);
+    text-decoration:wavy;
 }
 
 li{

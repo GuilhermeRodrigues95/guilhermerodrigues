@@ -1,0 +1,117 @@
+body{
+    background: rgb(43, 44, 44);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+header {
+    display: flex;
+    color: white;
+    justify-content: space-between;
+    margin: auto;
+    margin: auto;
+    padding: 10px;
+    width: 1200px;
+}
+
+.logo {
+    flex-direction: column;
+    line-height: 0px;
+    cursor: pointer;
+    margin: 15px 25px;
+}
+.logo >h1{
+    color:blueviolet;
+    font:900;
+    font-size: 30px;
+}
+
+.logo >h2{
+    color:white;
+    font:900;
+    font-size: 16px;
+}
+
+li{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    display: inline-block;
+    padding: 0px;
+    margin: 20px;
+}
+
+a {
+    color: white;
+    cursor: pointer;
+}
+
+a:hover {
+    color:blueviolet;
+    transition: 0.3s;
+}
+
+article{
+    margin: auto;
+}
+
+article img {
+    width: 600px;
+    margin: auto;  
+}
+
+main{
+    display: flex;
+    flex-direction:row;
+    padding: 0px;
+    width: 1200px;
+    margin: auto;
+}    
+
+aside{
+  margin: auto;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  align-items: center;
+  justify-content: center;
+  width: 600px;
+  padding: 0px;
+  display:flex;
+  flex-direction:column;
+  margin-top: 0px;
+  }
+
+  aside >h2{
+    color: blueviolet;
+    font: bold;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin-bottom: 50px;
+    text-align: center;
+  }
+
+  aside >h4{
+    margin: 10px;
+    text-align: justify;
+  }
+
+footer{
+    width: 1200px;
+    height: 5vh;
+    background: rgb(43, 42, 42);
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    color: white;
+    align-items: center;
+    justify-content: center;
+}
+.rodapé {
+    background: rgb(43, 42, 42);
+    width: 1200px;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 10px 20px #00000056;
+}
+.rodapé >h1{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 12px;
+    text-align: center;
+}
