@@ -2,6 +2,8 @@
 
     header{
         flex-direction: column;
+        margin: auto;
+        align-items: center;
     }
 
     main{
