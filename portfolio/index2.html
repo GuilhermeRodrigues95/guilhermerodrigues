@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Meu Diário de Treinos</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Ícones -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+  <h1>Meu Controle de Treinos</h1>
+
+  <form id="form-treino">
+    <input type="date" id="data" required>
+    <input type="number" id="distancia" placeholder="Distância (km)" required>
+    <input type="number" id="tempo" placeholder="Tempo (min)" required>
+    <button type="submit">Adicionar treino</button>
+  </form>
+
+  <p id="mensagem-vazia">Nenhum treino cadastrado ainda.</p>
+
+  <div id="lista-cards"></div>
+
+  <!-- MODAL -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <h2>Editar treino</h2>
+
+      <input type="date" id="edit-data">
+      <input type="number" id="edit-distancia" placeholder="Distância">
+      <input type="number" id="edit-tempo" placeholder="Tempo">
+
+      <button onclick="salvarEdicao()">Salvar</button>
+      <button onclick="fecharModal()">Cancelar</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

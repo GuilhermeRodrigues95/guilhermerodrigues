@@ -1,0 +1,104 @@
+body {
+    font-family: Arial;
+    background-color: #121212;
+    color: white;
+    margin: 0;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  h1 {
+    font-size: 24px;
+  }
+  
+  /* FORM */
+  form {
+    margin: 20px auto;
+    max-width: 400px;
+  }
+  
+  input, button {
+    width: 100%;
+    margin: 5px 0;
+    padding: 12px;
+    box-sizing: border-box;
+  }
+  
+  /* BOTÕES */
+  button {
+    background-color: green;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    opacity: 0.8;
+  }
+  
+  /* MENSAGEM */
+  #mensagem-vazia {
+    margin-top: 20px;
+    color: #ccc;
+  }
+  
+  /* CARDS */
+  #lista-cards {
+    max-width: 500px;
+    margin: auto;
+  }
+  
+  .card {
+    background: #1e1e1e;
+    margin: 10px 0;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: left;
+  }
+  
+  .card p {
+    margin: 5px 0;
+  }
+  
+  .card-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+  
+  /* MODAL */
+  .modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+  }
+  
+  .modal-content {
+    background: #1e1e1e;
+    padding: 20px;
+    margin: 30% auto;
+    width: 90%;
+    max-width: 300px;
+    border-radius: 10px;
+  }
+  
+  .modal-content input {
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+  }
+  
+  /* RESPONSIVO */
+  @media (min-width: 768px) {
+    h1 {
+      font-size: 32px;
+    }
+  
+    form {
+      max-width: 600px;
+    }
+  }
