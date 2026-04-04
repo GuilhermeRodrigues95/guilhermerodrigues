@@ -2,44 +2,91 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="styles/style.css" rel="stylesheet">
-    <link href="styles/fonts.css" rel="stylesheet">
-    <link href="styles/media.css" rel="stylesheet">
-    <title>Guilherme Rodrigues</title>
+    <title>Guilherme Rodrigues | Portfólio</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
- <header> <!--Cabeçalho-->
-        <div id="title">
-            <h1>Guilherme Rodrigues 2026</h1>   
-            <h3>Desenvolvedor Web</h3> 
-        </div>  
 
-        <ul> <!-- Lista desordenada -->
-            <a href="index.html"><li>Inicio</li></a> <!--a significa que é o link href é o caminho-->
-            <a href="#"><li>Serviços</li></a>
-            <a href="#"><li>Sobre</li></a>
-            <a href="portfolio.html"><li>Portfólio</li></a>
-            <a href="#" id="inscreva-se-but"><li>Painel de controle</li></a>
- </header>   
-    <main> <!--parte principal do site-->
-        <article> <!--div semantica onde serão abrigadas imagens-->
-            <img src="images/img.svg" alt="imagem">
-        </article>
-        <aside><!--tag semantica para definir uma página que tenha um lado-->
-            <h2><span>Inscreva-se Agora</span></h2> <!--h2 é o texto de nível 2 -->
-            <h2>NewsLetter</h2>
-            <p>Inscreva-se para receber atualizações sobre o nosso portifólio, promoções e muito mais.</p> <!--parágrafo-->
-            <!--tag semantica para formulário-->
-            <form>
-                <input type="text" placeholder="Nome"> <!--placeholder é o nome que fica dentrod a caíxa de texto-->
-                <input type="email" placeholder="E-mail">
-                <input type="submit" value="Enviar">
-                <!--em caso de botão não se troca o texto com o placeholder e sim com o value-->
-            </form>
+    <header>
+        <h1>GUILHERME RODRIGUES</h1>
+        <p class="subtitle" id="typing-effect"></p>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Portfólio</a></li>
+                <li><a href="#">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <aside class="sobre-mim">
+            <h3>Sobre mim</h3>
+            <p>Minha jornada na tecnologia é movida pela curiosidade e pelo desejo de criar. Acredito que a web é o espaço onde a criatividade encontra a engenharia. Como desenvolvedor, dedico meu tempo a criar aplicações que não apenas funcionam perfeitamente, mas que também encantam quem as utiliza. Sou organizado, atento aos detalhes e um eterno aprendiz das novas linguagens que moldam o futuro da internet.</p>
+            
+            <h3>Tecnologias</h3>
+            <ul class="tech-list">
+                <li>Core: Domínio em estrutura (HTML) e estilização avançada (CSS).</li>
+                <li>Interatividade: Lógica de programação dinâmica com JavaScript.</li>
+                <li>Workflow: Versionamento com Git e foco em Clean Code.</li>
+            </ul>
         </aside>
-        
+
+        <section class="projetos">
+            <h4>Últimos Projetos</h4>
+            
+            <div class="grade-projetos">
+                <div class="card">
+                    <img src="https://picsum.photos/400/250?random=1" alt="Projeto 1">
+                    <div class="card-info">
+                        <span>Projeto</span>
+                        <h5>Legenda</h5>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://picsum.photos/400/250?random=2" alt="Projeto 2">
+                    <div class="card-info">
+                        <span>Projeto</span>
+                        <h5>Legenda</h5>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://picsum.photos/400/250?random=3" alt="Projeto 3">
+                    <div class="card-info">
+                        <span>Projeto</span>
+                        <h5>Legenda</h5>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://picsum.photos/400/250?random=4" alt="Projeto 4">
+                    <div class="card-info">
+                        <span>Projeto</span>
+                        <h5>Legenda</h5>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://picsum.photos/400/250?random=5" alt="Projeto 5">
+                    <div class="card-info">
+                        <span>Projeto</span>
+                        <h5>Legenda</h5>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://picsum.photos/400/250?random=6" alt="Projeto 6">
+                    <div class="card-info">
+                        <span>Projeto</span>
+                        <h5>Legenda</h5>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
+
+    <footer>
+        <p>&copy; 2026 Guilherme Rodrigues - Todos os direitos reservados</p>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>

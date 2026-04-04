@@ -1,0 +1,202 @@
+/* 1. Reset e Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+body {
+    background-color: #0d0d10;
+    color: #f0f0f0;
+    line-height: 1.6;
+    overflow-x: hidden; /* Impede o scroll lateral indesejado */
+}
+
+/* 2. Header e Menu */
+header {
+    padding: 60px 20px 30px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: clamp(2rem, 8vw, 3.5rem); /* Tamanho dinâmico: diminui no celular */
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    color: #a855f7;
+    font-size: 1.1rem;
+    min-height: 1.5em;
+    margin-bottom: 30px;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* Permite que os links quebrem linha se o celular for muito pequeno */
+    gap: 20px;
+    list-style: none;
+    border-top: 1px solid #222;
+    max-width: 500px;
+    margin: 0 auto;
+    padding-top: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #777;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: #a855f7;
+}
+
+/* 3. Layout Principal (Container) */
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 20px;
+    
+    /* No computador: 2 colunas. No celular: 1 coluna (ajustado na media query abaixo) */
+    display: grid;
+    grid-template-columns: 300px 1fr; 
+    gap: 50px;
+}
+
+/* 4. Sidebar "Sobre Mim" */
+.sobre-mim h3 {
+    width: fit-content;
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    border-bottom: 2px solid;
+    border-image: linear-gradient(to right, #8a2be2, transparent) 1;
+    padding-bottom: 4px;
+}
+
+.sobre-mim p {
+    color: #999;
+    font-size: 0.95rem;
+    margin-bottom: 25px;
+}
+
+.tech-list {
+    list-style: none;
+    color: #a855f7;
+    font-weight: 600;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.tech-list li::after {
+    margin-left: 10px;
+    color: #999;
+}
+
+/* 5. Seção Projetos */
+h4 {
+    text-align: center;
+    width: fit-content;
+    margin: 0 auto 40px;
+    font-size: 1.6rem;
+    padding-bottom: 5px;
+    border-bottom: 2px solid;
+    border-image: linear-gradient(to right, transparent, #8a2be2, transparent) 1;
+}
+
+.grade-projetos {
+    display: grid;
+    /* Força 3 colunas por padrão no desktop */
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+/* 6. Cards dos Projetos */
+.card {
+    background: #16161d;
+    border-radius: 12px;
+    border: 1px solid #222;
+    overflow: hidden;
+    opacity: 0; /* JS vai alterar isso */
+    transform: translateY(20px);
+    transition: all 0.4s ease;
+}
+
+.card:hover {
+    border-color: #8a2be2;
+    transform: translateY(-5px) important;
+    box-shadow: 0 10px 20px rgba(138, 43, 226, 0.1);
+}
+
+.card img {
+    width: 100%;
+    aspect-ratio: 16/10;
+    object-fit: cover;
+}
+
+.card-info {
+    padding: 15px;
+}
+
+.card-info span {
+    font-size: 0.65rem;
+    color
+}
+
+/* 7. Footer - Centralização Garantida */
+footer {
+    width: 100%;            /* Garante que o rodapé ocupe a largura total */
+    padding: 60px 20px;
+    display: flex;          /* Usa Flexbox para alinhar o conteúdo */
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center;    /* Centraliza verticalmente */
+    text-align: center;     /* Garante que o texto interno também alinhe */
+    color: #444;
+    font-size: 0.8rem;
+    clear: both;            /* Limpa qualquer interferência de elementos flutuantes */
+}
+
+footer p {
+    margin: 0 auto;         /* Reforço para centralizar o parágrafo */
+}
+
+
+/* 1. Preparamos o item da lista para receber a linha */
+.tech-list li {
+    color: #999;
+    font-size: 0.95rem;
+    margin-bottom: 25px;
+    position: relative; /* Base para a linha se posicionar */
+    cursor: pointer;
+    overflow: hidden;   /* Garante que a linha não escape do arredondamento */
+    transition: all 0.3s ease;
+    padding: 5px 0px;
+    margin-bottom: -5px;
+}
+
+/* 2. Criamos a linha invisível no fundo do balão */
+.tech-list li::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;           /* Começa com largura zero */
+    height: 1px;        /* Espessura da linha */
+    background: #a855f7; /* Cor do sublinhado */
+    transition: width 0.4s ease; /* Animação de crescimento */
+}
+
+/* 3. Efeito ao passar o mouse */
+.tech-list li:hover {
+    transform: translateX(5px);          /* Pequeno deslocamento lateral (opcional) */
+}
+
+.tech-list li:hover::after {
+    width: 100%;        /* A linha preenche todo o fundo do balão */
+}
