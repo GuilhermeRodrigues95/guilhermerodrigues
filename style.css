@@ -225,8 +225,8 @@ footer {
 
 /* imagem */
 .modal-content {
-    max-width: 90%;
-    max-height: 90%;
+    max-width: 30%;
+    max-height: 30%;
     border-radius: 10px;
     animation: zoom 0.25s ease;
 }
