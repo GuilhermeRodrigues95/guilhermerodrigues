@@ -229,7 +229,7 @@ footer {
     max-height: 30%;
     border-radius: 10px;
     animation: zoom 0.25s ease;
-    aling: center;
+    align-content: flex-start;
 }
 
 /* animação */
