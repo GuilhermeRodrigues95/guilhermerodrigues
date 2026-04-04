@@ -3,14 +3,16 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 body {
-    background-color: #0d0d10;
+    /* Aplicando o fundo "Off-Black" que conversamos */
+    background: radial-gradient(circle at top center, #1a1025 0%, #0d0d0f 40%);
+    background-attachment: fixed;
     color: #f0f0f0;
     line-height: 1.6;
-    overflow-x: hidden; /* Impede o scroll lateral indesejado */
+    overflow-x: hidden;
 }
 
 /* 2. Header e Menu */
@@ -19,15 +21,26 @@ header {
     text-align: center;
 }
 
+.site-logo {
+    width: 80px; /* Reduzi levemente para melhorar a UX */
+    height: auto;
+    display: block;
+    margin: 0 auto 20px;
+    filter: drop-shadow(0 0 12px rgba(138, 43, 226, 0.6));
+}
+
 header h1 {
-    font-size: clamp(2rem, 8vw, 3.5rem); /* Tamanho dinâmico: diminui no celular */
-    font-weight: 800;
-    margin-bottom: 10px;
+    font-size: 1.2rem; 
+    font-weight: 400;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: #666;
+    margin-top: 10px;
 }
 
 .subtitle {
     color: #a855f7;
-    font-size: 1.1rem;
+    font-size: 1rem;
     min-height: 1.5em;
     margin-bottom: 30px;
 }
@@ -35,8 +48,8 @@ header h1 {
 nav ul {
     display: flex;
     justify-content: center;
-    flex-wrap: wrap; /* Permite que os links quebrem linha se o celular for muito pequeno */
-    gap: 20px;
+    flex-wrap: wrap;
+    gap: 30px;
     list-style: none;
     border-top: 1px solid #222;
     max-width: 500px;
@@ -46,10 +59,10 @@ nav ul {
 
 nav a {
     text-decoration: none;
-    color: #777;
+    color: #555;
     text-transform: uppercase;
-    font-size: 0.8rem;
-    font-weight: 600;
+    font-size: 0.75rem;
+    font-weight: 700;
     transition: 0.3s;
 }
 
@@ -60,13 +73,12 @@ nav a:hover {
 /* 3. Layout Principal (Container) */
 .container {
     max-width: 1200px;
-    margin: 20px auto;
+    margin: 40px auto;
     padding: 0 20px;
-    
-    /* No computador: 2 colunas. No celular: 1 coluna (ajustado na media query abaixo) */
     display: grid;
+    /* Desktop: Sidebar de 300px e Projetos no resto */
     grid-template-columns: 300px 1fr; 
-    gap: 50px;
+    gap: 60px;
 }
 
 /* 4. Sidebar "Sobre Mim" */
@@ -87,20 +99,41 @@ nav a:hover {
 
 .tech-list {
     list-style: none;
-    color: #a855f7;
-    font-weight: 600;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
+}
+
+.tech-list li {
+    color: #999;
+    font-size: 0.95rem;
+    margin-bottom: 12px;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 5px 0;
+    width: fit-content;
 }
 
 .tech-list li::after {
-    margin-left: 10px;
-    color: #999;
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: #a855f7;
+    transition: width 0.4s ease;
+}
+
+.tech-list li:hover {
+    transform: translateX(5px);
+    color: #fff;
+}
+
+.tech-list li:hover::after {
+    width: 100%;
 }
 
 /* 5. Seção Projetos */
-h4 {
+.projetos h4 {
     text-align: center;
     width: fit-content;
     margin: 0 auto 40px;
@@ -112,8 +145,7 @@ h4 {
 
 .grade-projetos {
     display: grid;
-    /* Força 3 colunas por padrão no desktop */
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr); /* 3 colunas no Desktop */
     gap: 20px;
 }
 
@@ -123,14 +155,12 @@ h4 {
     border-radius: 12px;
     border: 1px solid #222;
     overflow: hidden;
-    opacity: 0; /* JS vai alterar isso */
-    transform: translateY(20px);
     transition: all 0.4s ease;
 }
 
 .card:hover {
     border-color: #8a2be2;
-    transform: translateY(-5px) important;
+    transform: translateY(-5px);
     box-shadow: 0 10px 20px rgba(138, 43, 226, 0.1);
 }
 
@@ -138,6 +168,12 @@ h4 {
     width: 100%;
     aspect-ratio: 16/10;
     object-fit: cover;
+    transition: transform 0.5s ease, filter 0.5s ease;
+}
+
+.card:hover img {
+    transform: scale(1.1);
+    filter: brightness(1.1);
 }
 
 .card-info {
@@ -145,58 +181,70 @@ h4 {
 }
 
 .card-info span {
-    font-size: 0.65rem;
-    color
+    font-size: 0.7rem;
+    color: #666;
+    display: block;
+    margin-bottom: 5px;
 }
 
-/* 7. Footer - Centralização Garantida */
+.card-info h5 {
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+/* 7. Footer */
 footer {
-    width: 100%;            /* Garante que o rodapé ocupe a largura total */
+    width: 100%;
     padding: 60px 20px;
-    display: flex;          /* Usa Flexbox para alinhar o conteúdo */
-    justify-content: center; /* Centraliza horizontalmente */
-    align-items: center;    /* Centraliza verticalmente */
-    text-align: center;     /* Garante que o texto interno também alinhe */
-    color: #444;
-    font-size: 0.8rem;
-    clear: both;            /* Limpa qualquer interferência de elementos flutuantes */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-top: 1px solid #1a1a1a;
+    margin-top: 80px;
 }
 
 footer p {
-    margin: 0 auto;         /* Reforço para centralizar o parágrafo */
+    color: #444;
+    font-size: 0.8rem;
 }
 
+/* =============================================
+   8. RESPONSIVIDADE (O PULO DO GATO)
+   ============================================= */
 
-/* 1. Preparamos o item da lista para receber a linha */
-.tech-list li {
-    color: #999;
-    font-size: 0.95rem;
-    margin-bottom: 25px;
-    position: relative; /* Base para a linha se posicionar */
-    cursor: pointer;
-    overflow: hidden;   /* Garante que a linha não escape do arredondamento */
-    transition: all 0.3s ease;
-    padding: 5px 0px;
-    margin-bottom: -5px;
+/* Para Tablets (Telas até 1024px) */
+@media (max-width: 1024px) {
+    .container {
+        grid-template-columns: 1fr; /* Sidebar vai para cima dos projetos */
+        gap: 40px;
+    }
+
+    .grade-projetos {
+        grid-template-columns: repeat(2, 1fr); /* Apenas 2 colunas de projetos */
+    }
 }
 
-/* 2. Criamos a linha invisível no fundo do balão */
-.tech-list li::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;           /* Começa com largura zero */
-    height: 1px;        /* Espessura da linha */
-    background: #a855f7; /* Cor do sublinhado */
-    transition: width 0.4s ease; /* Animação de crescimento */
-}
+/* Para Celulares (Telas até 600px) */
+@media (max-width: 600px) {
+    header {
+        padding: 40px 20px;
+    }
 
-/* 3. Efeito ao passar o mouse */
-.tech-list li:hover {
-    transform: translateX(5px);          /* Pequeno deslocamento lateral (opcional) */
-}
+    header h1 {
+        font-size: 1rem;
+        letter-spacing: 3px;
+    }
 
-.tech-list li:hover::after {
-    width: 100%;        /* A linha preenche todo o fundo do balão */
+    .grade-projetos {
+        grid-template-columns: 1fr; /* Tudo vira uma única coluna */
+    }
+
+    .container {
+        padding: 0 15px;
+    }
+
+    nav ul {
+        gap: 15px; /* Links mais próximos no celular */
+    }
 }
