@@ -1,38 +1,56 @@
-// 1. Efeito de Digitação (Typewriter)
-const txtElement = document.getElementById('typing-effect');
-const words = "Desenvolvedor Web";
-let charIndex = 0;
+document.addEventListener("DOMContentLoaded", () => {
 
-function type() {
-    if (charIndex < words.length) {
-        txtElement.textContent += words.charAt(charIndex);
-        charIndex++;
-        setTimeout(type, 100); // Velocidade da digitação
-    }
-}
+    // ===== TEXTO DIGITANDO =====
+    const txtElement = document.getElementById('typing-effect');
+    const words = "Desenvolvedor Web";
+    let charIndex = 0;
 
-// 2. Revelação ao Rolar (Scroll Reveal)
-// Esse Observer detecta quando os cards aparecem na tela
-const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-            // Adiciona estilos para fazer o card aparecer suavemente
-            entry.target.style.opacity = "1";
-            entry.target.style.transform = "translateY(0)";
+    function type() {
+        if (charIndex < words.length) {
+            txtElement.textContent += words.charAt(charIndex);
+            charIndex++;
+            setTimeout(type, 80);
         }
-    });
-}, {
-    threshold: 0.1 // O efeito inicia quando 10% do card está visível
-});
+    }
 
-// Inicialização de tudo
-document.addEventListener('DOMContentLoaded', () => {
-    // Inicia a digitação
     type();
 
-    // Aplica o observador em cada card
-    const cards = document.querySelectorAll('.card');
-    cards.forEach((card) => {
-        revealObserver.observe(card);
-    });
+    // ===== ANIMAÇÃO DOS CARDS =====
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('show');
+            }
+        });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.card').forEach(card => observer.observe(card));
+
+    // ===== MODAL FOTO =====
+    const modal = document.getElementById("modal");
+    const modalImg = document.getElementById("modal-img");
+    const fotoPerfil = document.querySelector(".foto-perfil");
+    const closeBtn = document.querySelector(".close");
+
+    if (fotoPerfil && modal && modalImg && closeBtn) {
+
+        // abrir
+        fotoPerfil.addEventListener("click", () => {
+            modal.classList.add("active");
+            modalImg.src = fotoPerfil.src;
+        });
+
+        // fechar botão
+        closeBtn.addEventListener("click", () => {
+            modal.classList.remove("active");
+        });
+
+        // fechar clicando fora
+        modal.addEventListener("click", (e) => {
+            if (e.target === modal) {
+                modal.classList.remove("active");
+            }
+        });
+    }
+
 });

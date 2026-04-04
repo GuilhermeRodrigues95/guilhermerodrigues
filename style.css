@@ -1,68 +1,74 @@
-/* 1. Reset e Base */
+/* RESET */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: 'Inter', sans-serif;
 }
 
+/* FUNDO ANIMADO */
 body {
-    /* Aplicando o fundo "Off-Black" que conversamos */
     background: radial-gradient(circle at top center, #1a1025 0%, #0d0d0f 40%);
-    background-attachment: fixed;
     color: #f0f0f0;
     line-height: 1.6;
     overflow-x: hidden;
 }
 
-/* 2. Header e Menu */
+body::before {
+    content: "";
+    position: fixed;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(168,85,247,0.08) 0%, transparent 60%);
+    animation: float 12s infinite alternate;
+    z-index: -1;
+}
+
+@keyframes float {
+    from { transform: translate(-10%, -10%); }
+    to { transform: translate(10%, 10%); }
+}
+
+/* HEADER */
 header {
     padding: 60px 20px 30px;
     text-align: center;
 }
 
 .site-logo {
-    width: 80px; /* Reduzi levemente para melhorar a UX */
-    height: auto;
-    display: block;
-    margin: 0 auto 20px;
-    filter: drop-shadow(0 0 12px rgba(138, 43, 226, 0.6));
+    width: 80px;
+    margin-bottom: 20px;
+    filter: drop-shadow(0 0 12px rgba(138,43,226,0.6));
 }
 
 header h1 {
-    font-size: 1.2rem; 
-    font-weight: 400;
+    font-size: 1.2rem;
     letter-spacing: 6px;
-    text-transform: uppercase;
     color: #666;
-    margin-top: 10px;
 }
 
 .subtitle {
     color: #a855f7;
-    font-size: 1rem;
     min-height: 1.5em;
     margin-bottom: 30px;
 }
 
+/* NAV */
 nav ul {
     display: flex;
     justify-content: center;
-    flex-wrap: wrap;
     gap: 30px;
     list-style: none;
     border-top: 1px solid #222;
     max-width: 500px;
-    margin: 0 auto;
+    margin: auto;
     padding-top: 20px;
 }
 
 nav a {
     text-decoration: none;
     color: #555;
-    text-transform: uppercase;
-    font-size: 0.75rem;
-    font-weight: 700;
+    font-weight: bold;
     transition: 0.3s;
 }
 
@@ -70,57 +76,30 @@ nav a:hover {
     color: #a855f7;
 }
 
-/* 3. Layout Principal (Container) */
+/* LAYOUT */
 .container {
     max-width: 1200px;
     margin: 40px auto;
     padding: 0 20px;
     display: grid;
-    /* Desktop: Sidebar de 300px e Projetos no resto */
-    grid-template-columns: 300px 1fr; 
+    grid-template-columns: 300px 1fr;
     gap: 60px;
 }
 
-/* 4. Sidebar "Sobre Mim" */
+/* SOBRE */
 .sobre-mim h3 {
-    width: fit-content;
-    font-size: 1.3rem;
-    margin-bottom: 15px;
     border-bottom: 2px solid;
     border-image: linear-gradient(to right, #8a2be2, transparent) 1;
-    padding-bottom: 4px;
 }
 
-.sobre-mim p {
-    color: #999;
-    font-size: 0.95rem;
-    margin-bottom: 25px;
-}
-
-.tech-list {
-    list-style: none;
-}
-
+.sobre-mim p,
 .tech-list li {
     color: #999;
-    font-size: 0.95rem;
-    margin-bottom: 12px;
-    position: relative;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    padding: 5px 0;
-    width: fit-content;
 }
 
-.tech-list li::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 1px;
-    background: #a855f7;
-    transition: width 0.4s ease;
+/* TECH */
+.tech-list li {
+    transition: 0.3s;
 }
 
 .tech-list li:hover {
@@ -128,123 +107,142 @@ nav a:hover {
     color: #fff;
 }
 
-.tech-list li:hover::after {
-    width: 100%;
-}
-
-/* 5. Seção Projetos */
+/* PROJETOS */
 .projetos h4 {
     text-align: center;
-    width: fit-content;
-    margin: 0 auto 40px;
-    font-size: 1.6rem;
-    padding-bottom: 5px;
-    border-bottom: 2px solid;
-    border-image: linear-gradient(to right, transparent, #8a2be2, transparent) 1;
+    margin-bottom: 40px;
 }
 
+/* GRID */
 .grade-projetos {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 colunas no Desktop */
+    grid-template-columns: repeat(3, 1fr);
     gap: 20px;
 }
 
-/* 6. Cards dos Projetos */
+/* CARD PREMIUM */
 .card {
+    position: relative;
     background: #16161d;
     border-radius: 12px;
-    border: 1px solid #222;
     overflow: hidden;
-    transition: all 0.4s ease;
+    border: 1px solid #222;
+
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease;
+}
+
+.card.show {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .card:hover {
+    transform: translateY(-8px);
     border-color: #8a2be2;
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(138, 43, 226, 0.1);
+    box-shadow: 0 10px 25px rgba(138, 43, 226, 0.2);
 }
 
 .card img {
     width: 100%;
-    aspect-ratio: 16/10;
-    object-fit: cover;
-    transition: transform 0.5s ease, filter 0.5s ease;
+    transition: 0.5s;
 }
 
 .card:hover img {
     transform: scale(1.1);
-    filter: brightness(1.1);
+    filter: brightness(1.2);
 }
 
 .card-info {
     padding: 15px;
 }
 
-.card-info span {
-    font-size: 0.7rem;
-    color: #666;
-    display: block;
-    margin-bottom: 5px;
-}
-
-.card-info h5 {
-    font-size: 1rem;
-    font-weight: 600;
-}
-
-/* 7. Footer */
+/* FOOTER */
 footer {
-    width: 100%;
-    padding: 60px 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     text-align: center;
+    padding: 60px;
     border-top: 1px solid #1a1a1a;
     margin-top: 80px;
-}
-
-footer p {
     color: #444;
-    font-size: 0.8rem;
 }
 
-/* =============================================
-   8. RESPONSIVIDADE (O PULO DO GATO)
-   ============================================= */
-
-/* Para Tablets (Telas até 1024px) */
+/* RESPONSIVO */
 @media (max-width: 1024px) {
     .container {
-        grid-template-columns: 1fr; /* Sidebar vai para cima dos projetos */
-        gap: 40px;
+        grid-template-columns: 1fr;
     }
 
     .grade-projetos {
-        grid-template-columns: repeat(2, 1fr); /* Apenas 2 colunas de projetos */
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
-/* Para Celulares (Telas até 600px) */
 @media (max-width: 600px) {
-    header {
-        padding: 40px 20px;
-    }
-
-    header h1 {
-        font-size: 1rem;
-        letter-spacing: 3px;
-    }
-
     .grade-projetos {
-        grid-template-columns: 1fr; /* Tudo vira uma única coluna */
+        grid-template-columns: 1fr;
     }
+}
 
-    .container {
-        padding: 0 15px;
-    }
+.foto-perfil {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 20%;
+    display: block;
+    margin: 0 auto 20px;
 
-    nav ul {
-        gap: 15px; /* Links mais próximos no celular */
-    }
+    border: 3px solid #8a2be2;
+    box-shadow: 0 0 20px rgba(138, 43, 226, 0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.foto-perfil:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px rgba(138, 43, 226, 0.8);
+}
+
+/* MODAL */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.9);
+
+    /* centralização */
+    justify-content: center;
+    align-items: center;
+}
+
+/* quando ativo */
+.modal.active {
+    display: flex;
+}
+
+/* imagem */
+.modal-content {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 10px;
+    animation: zoom 0.25s ease;
+}
+
+/* animação */
+@keyframes zoom {
+    from { transform: scale(0.7); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+/* botão fechar */
+.close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: #fff;
+    font-size: 40px;
+    cursor: pointer;
 }
